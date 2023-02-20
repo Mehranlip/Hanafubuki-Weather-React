@@ -1,0 +1,47 @@
+.box-app {
+    background: #F0F0F0;
+    border-radius: 25px;
+}
+
+.search-box input {
+    padding: 20px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 32px 32px -12px rgba(248, 142, 151, 0.24);
+    border-radius: 16px;
+    border: none;
+}
+
+.search-box input::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #414B5A;
+
+}
+
+.name-city {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+
+    color: #414B5A;
+}
+
+.date {
+    margin-top: 7px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+    /* identical to box height */
+
+
+    color: #414B5A;
+}
