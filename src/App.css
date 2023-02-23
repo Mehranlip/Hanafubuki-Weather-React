@@ -45,3 +45,69 @@
 
     color: #414B5A;
 }
+
+.box-show-weather {
+    background: #FDFDFD;
+    border: 1px solid #E0E0E0;
+    box-shadow: 2px 8px 20px -1px rgba(0, 0, 0, 0.15);
+    /* filter: blur(1px); */
+    border-radius: 16px;
+}
+
+.TEMPERATURE {
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+
+
+    color: #808080;
+}
+
+.main-weather-range {
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 47px;
+    /* identical to box height */
+
+
+    color: #414B5A;
+}
+
+.Real-feel {
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+
+
+    color: #414B5A;
+
+
+}
+
+.icon-weather img {
+    width: 70%;
+
+}
+
+.weather-status {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #414B5A;
+}
