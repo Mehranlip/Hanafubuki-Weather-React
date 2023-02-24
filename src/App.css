@@ -1,3 +1,15 @@
+@media (max-width: 575.98px) {
+    .box-app {
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(2.9px) !important;
+        -webkit-backdrop-filter: blur(2.9px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.19) !important
+    }
+}
+
+
 .box-app {
     background: #F0F0F0;
     border-radius: 25px;
@@ -110,4 +122,32 @@
 
 
     color: #414B5A;
+}
+
+.title-meta-data p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #808080;
+
+}
+
+.description-meta-data p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #414B5A;
+
+}
+
+.box-sidebar {
+    background: #FDFDFD;
+    box-shadow: -2px 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 64px;
 }
