@@ -1,3 +1,6 @@
+import { useState } from "react";
+import axios from "axios";
+
 import "./App.css";
 import icon_weather from "../src/assets/icon-cloud.png";
 import cloud_drizzle from "../src/assets/icon-sideBar/cloud-drizzle.svg";
@@ -6,6 +9,21 @@ import layout from "../src/assets/icon-sideBar/layout.svg";
 import map_pin from "../src/assets/icon-sideBar/map-pin.svg";
 
 function App() {
+  const [data, setdata] = useState({});
+  const [location, setLocation] = useState("");
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=8e826b363bd41c64db8fc0d54f013717`;
+
+  const searchLocation = (event) => {
+    if (event.key === "Enter") {
+      axios.get(url).then((response) => {
+        setdata(response.data);
+        console.log(response.data);
+      });
+      setLocation("");
+    }
+  };
+
   return (
     <div className="App">
       <div className="row m-0 h-100 d-flex align-items-center justify-content-center  ">
@@ -13,15 +31,25 @@ function App() {
           <div className="box-app">
             {/* input search */}
             <div className="search-box px-3 py-4">
-              <input placeholder="Search" type="text" />
+              <input
+                value={location}
+                onChange={(event) => setLocation(event.target.value)}
+                onKeyPress={searchLocation}
+                placeholder="Search"
+                type="text"
+              />
             </div>
             {/* end input search */}
             {/* city name and date section */}
             <div className="row">
-              <div className="col-12 text-center name-city">Accra, Ghana</div>
+              <div className="col-12 text-center name-city">
+                {data.name ? <span>{data.name}</span> : "Arak"}
+              </div>
             </div>
             <div className="row">
-              <div className="col-12 text-center date">22-Sep-22</div>
+              <div className="col-12 text-center date">
+                {data.sys ? <span>{data.sys.country}</span> : "IR"}
+              </div>
             </div>
             {/* end city name and data section */}
             {/* box show weather  */}
@@ -34,10 +62,20 @@ function App() {
                       <div className="col-12 TEMPERATURE">TEMPERATURE</div>
                     </div>
                     <div className="row text-start">
-                      <div className="col-12 main-weather-range">20°</div>
+                      <div className="col-12 main-weather-range">
+                        {" "}
+                        {data.main ? (
+                          <span>{data.main.temp.toFixed()}°F</span>
+                        ) : (
+                          "28°F"
+                        )}
+                      </div>
                     </div>
                     <div className="row text-start">
-                      <div className="col-12 Real-feel">Real feel: 20</div>
+                      <div className="col-12 Real-feel">
+                        Feels Like:{" "}
+                        {data.main ? <span>{data.main.feels_like}</span> : "25"}
+                      </div>
                     </div>
                   </div>
                   {/* end show main weather data */}
@@ -53,7 +91,13 @@ function App() {
                       </div>
                     </div>
                     <div className="row text-center">
-                      <div className="weather-status">Cloudy</div>
+                      <div className="weather-status">
+                        {data.main ? (
+                          <span>{data.weather[0].main}</span>
+                        ) : (
+                          "Cloudy"
+                        )}
+                      </div>
                     </div>
                   </div>
                   {/* end icon weather */}
@@ -64,18 +108,18 @@ function App() {
             {/* section meta data weather */}
             <div className="row px-4 py-3 mt-3">
               <div className="col-6 title-meta-data ">
-                <p>UV Index</p>
+                <p>Temp Max</p>
                 <p>Humidity</p>
                 <p>Wind Speed</p>
-                <p>Rain Probability</p>
+                <p>wind Deg</p>
                 <p>Pressure</p>
               </div>
               <div className="col-6 description-meta-data ">
-                <p>1.0</p>
-                <p>55</p>
-                <p>5.00 mph</p>
-                <p>30%</p>
-                <p>1023.1 pa</p>
+                <p>{data.main ? <span>{data.main.temp_max}</span> : "29"}</p>
+                <p>{data.main ? <span>{data.main.humidity}</span> : "51"}</p>
+                <p>{data.main ? <span>{data.wind.speed}</span> : "81"} mph</p>
+                <p>{data.main ? <span>{data.wind.deg}</span> : "52"}</p>
+                <p>{data.main ? <span>{data.main.pressure}</span> : "1023"}</p>
               </div>
             </div>
             {/* end section meta data weather */}
