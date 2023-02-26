@@ -7,26 +7,25 @@ import activity from "../src/assets/icon-sideBar/activity.svg";
 import layout from "../src/assets/icon-sideBar/layout.svg";
 import map_pin from "../src/assets/icon-sideBar/map-pin.svg";
 
-// import weather icon status
-import Clear from "../src/assets/icon-weather/Clear.svg";
-import Clouds from "../src/assets/icon-weather/Clouds.svg";
-import Drizzle from "../src/assets/icon-weather/Drizzle.svg";
-import Rain from "../src/assets/icon-weather/Rain.svg";
-import snow from "../src/assets/icon-weather/snow.svg";
-import Thunderstorm from "../src/assets/icon-weather/Thunderstorm.svg";
-
 function App() {
   const [data, setdata] = useState({});
   const [location, setLocation] = useState("");
+  const [icon, setIcon] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=8e826b363bd41c64db8fc0d54f013717`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
-      axios.get(url).then((response) => {
-        setdata(response.data);
-        console.log(response.data);
-      });
+      axios
+        .get(url)
+        .then((response) => {
+          setdata(response.data);
+          setIcon(data.weather[0].icon);
+        })
+        .catch(function (error) {
+          console.log("not found your city");
+          setIcon("02d");
+        });
       setLocation("");
     }
   };
@@ -92,7 +91,24 @@ function App() {
                   <div className=" col-6">
                     <div className="row">
                       <div className=" icon-weather">
-                        <img className="mx-auto d-block" src={Clouds} alt="" />
+                        {data.main ? (
+                          <img
+                            className="mx-auto d-block"
+                            src={
+                              "http://openweathermap.org/img/wn/" +
+                              icon +
+                              "@2x.png"
+                            }
+                            alt=""
+                          />
+                        ) : (
+                          <img
+                            className="mx-auto d-block"
+                            src={"http://openweathermap.org/img/wn/02d@2x.png"}
+                            alt=""
+                          />
+                        )}
+                        <br />
                       </div>
                     </div>
                     <div className="row text-center">
