@@ -2,11 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 
 import "./App.css";
-import icon_weather from "../src/assets/icon-cloud.png";
 import cloud_drizzle from "../src/assets/icon-sideBar/cloud-drizzle.svg";
 import activity from "../src/assets/icon-sideBar/activity.svg";
 import layout from "../src/assets/icon-sideBar/layout.svg";
 import map_pin from "../src/assets/icon-sideBar/map-pin.svg";
+
+// import weather icon status
+import Clear from "../src/assets/icon-weather/Clear.svg";
+import Clouds from "../src/assets/icon-weather/Clouds.svg";
+import Drizzle from "../src/assets/icon-weather/Drizzle.svg";
+import Rain from "../src/assets/icon-weather/Rain.svg";
+import snow from "../src/assets/icon-weather/snow.svg";
+import Thunderstorm from "../src/assets/icon-weather/Thunderstorm.svg";
 
 function App() {
   const [data, setdata] = useState({});
@@ -23,6 +30,8 @@ function App() {
       setLocation("");
     }
   };
+
+  // change weather icon status
 
   return (
     <div className="App">
@@ -83,11 +92,7 @@ function App() {
                   <div className=" col-6">
                     <div className="row">
                       <div className=" icon-weather">
-                        <img
-                          className="mx-auto d-block"
-                          src={icon_weather}
-                          alt=""
-                        />
+                        <img className="mx-auto d-block" src={Clouds} alt="" />
                       </div>
                     </div>
                     <div className="row text-center">
